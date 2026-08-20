@@ -1,4 +1,4 @@
-> In case the patches have to be applied during compile time instead of just modifying the code manually
+> In case the patches have to be applied during compile time instead of just modifying the code directly
 
 #### Install quilt
 ```
