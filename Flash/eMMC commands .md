@@ -85,7 +85,7 @@
 > mmc erase 0x3 0x6 
 ```
 
-## Kernel
+## Linux Kernel
 
 ```
 dmesg | grep mmc
@@ -128,6 +128,13 @@ cd /sys/class/mmc_host/mmc0/mmc0:0001/block/mmcblk0
 cat size
     15269888
 
+# Check the Pre-EOL flag from EXT_CSD register
+cat /sys/kernel/debug/mmc0/mmc0:0001/ext_csd | awk '{ "printf %d 0x"substr($0,535,2) | getline e; "printf %d 0x"substr($0,537,2) | getline a; "printf %d 0x"substr($0,539,2) | getline b; a*=10; b*=10; printf "Pre-EOL Info: 0x%02x (%s)\nDevice Life Time Type A(%s): ~%d%% used\nDevice Life Time Type B(%s): ~%d%% used\n", e, (e==1?"Normal":e==2?"WARNING":e==3?"Urgent":"Unknown"), (a<=20?"Low":a<=50?"Moderate":a<=80?"High":"Critical"), a, (b<=20?"Low":b<=50?"Moderate":b<=80?"High":"Critical"), b }'    
+    Pre-EOL Info: 0x01 (Normal)
+    Device Life Time Type A(Critical): ~110% used
+    Device Life Time Type B(Moderate): ~50% used
+```
+```
 # Dump eMMC
 cd /tmp
 # rm -rf /overlay/*
