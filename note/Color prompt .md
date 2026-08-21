@@ -1,3 +1,26 @@
+## Windows
+
+Open profile in notepad
+```powershell
+notepad $PROFILE
+```
+
+Add custom `prompt` function
+```powershell
+function prompt {
+    Write-Host "PS " -NoNewline -ForegroundColor Cyan
+    Write-Host "$(Get-Location)> " -NoNewline -ForegroundColor Yellow
+    return " "
+}
+```
+
+Save the file and restart terminal
+
+*If scripts are blocked, run PowerShell once as normal user:*
+```
+Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+```
+
 ## Linux
 
 Open ~/.bashrc with editor
@@ -7,7 +30,7 @@ Enable `force_color_prompt`
 force_color_prompt=yes
 ```
 
-Replace the new setting as follow
+Save the new setting as follow
 ```bash
 ## Prompt colors (ANSI + 256-color examples)
 ## Basic bright colors
