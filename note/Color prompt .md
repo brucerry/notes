@@ -17,7 +17,7 @@ function prompt {
 Save the file and restart terminal
 
 *If scripts are blocked, run PowerShell once as normal user:*
-```
+```powershell
 Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
 ```
 
