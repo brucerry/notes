@@ -61,4 +61,8 @@ docker push brucerry/ubt22.04_qsdk
 docker commit ubt24.04_bpi ubt24.04_bpi
 docker tag ubt24.04_bpi brucerry/ubt24.04_bpi
 docker push brucerry/ubt24.04_bpi
+
+docker commit ubt26.04 ubt26.04
+docker tag ubt26.04 brucerry/ubt26.04
+docker push brucerry/ubt26.04
 ```
